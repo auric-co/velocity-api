@@ -96,12 +96,13 @@ class Mail
     }
 
     public function formCapture(){
-        $this->mail->addAddress("info@velocityhealth.co.za");
-        $this->mail->setFrom($this->getEmail());
-        $this->mail->Subject = "Contact Us Form - ".$this->getSubject();
-        $this->mail->isHTML(true);
-        $message = $this->getMessage();
-        $body = '
+        try{
+            $this->mail->addAddress("info@velocityhealth.co.za");
+            $this->mail->setFrom($this->getEmail());
+            $this->mail->Subject = "Contact Us Form - ".$this->getSubject();
+            $this->mail->isHTML(true);
+            $message = $this->getMessage();
+            $body = '
                     <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
                     <html>
                     <head>
@@ -265,14 +266,19 @@ class Mail
                     </html>
         ';
 
-        $this->mail->Body = $body;
+            $this->mail->Body = $body;
 
-        if ($this->mail->send()) {
-            return  array('success' => true, 'statusCode' => SUCCESS_RESPONSE, 'message' => 'Email sent');
-        }else{
-            return array('success' => false, 'statusCode' => UNAUTHORISED, 'error'=> array('type' => "MAIL_ERROR", 'message' => 'Mail not sent'));
-            
+            if ($this->mail->send()) {
+                return  array('success' => true, 'statusCode' => SUCCESS_RESPONSE, 'message' => 'Email sent');
+            }else{
+                return array('success' => false, 'statusCode' => UNAUTHORISED, 'error'=> array('type' => "MAIL_ERROR", 'message' => 'Mail not sent'));
+
+            }
+
+        }catch (\PHPMailer\PHPMailer\Exception $e){
+            return array('success' => false, 'statusCode' => INTERNAL_SERVER_ERROR, 'error'=> array('type' => "MAIL_ERROR", 'message' => 'Mail not sent. Reason: '.$e));
         }
 
     }
+
 }

@@ -5,16 +5,78 @@ $app->get('/', App\Action\HomeAction::class)
 //System
 include_once dirname(__FILE__). '/../app/src/system/System.php';
 include_once dirname(__FILE__). '/../app/src/system/Admin.php';
+include_once dirname(__FILE__). '/../app/src/system/Users.php';
 include_once dirname(__FILE__). '/../app/src/system/Mail.php';
 
 $op = new System();
 $admin = new Admin();
+$user = new Users();
 $mail = new Mail();
 
 $app->get('/clients/points/leaderboard', function($request, $response)use($op){
     
 });
 
+$app->group('/user', function ($group)use($user){
+
+    $group->get('/registration/companies', function ($request, $response)use($user){
+        $clients = $user->companies();
+        return $response->withJson($clients)->withStatus($clients['statusCode']);
+    });
+
+    $group->patch('/register', function ($request, $response)use($user){
+        $params = $request->getParsedBody();
+
+        if ($params['password'] !== $params['confirmPassword']){
+            return array(
+                'success' => false,
+                'statusCode' => 500,
+                'error' => array('type' => 'REGISTRATION_EXCEPTION', 'message' => "Passwords do not match")
+            );
+        }else{
+            $user->setEmail($params['email']);
+            $user->setId($params['company']);
+            $user->setPassword($params['password']);
+            $register = $user->Register();
+            return $response->withJson($register)->withStatus($register['statusCode']);
+        }
+
+
+
+    });
+
+    $group->post('/login', function ($request, $response)use($user){
+        $params = $request->getParsedBody();
+        $user->setEmail($params['email']);
+        $user->setPassword($params['password']);
+        $login = $user->Login();
+        return $response->withJson($login)->withStatus($login['statusCode']);
+    });
+
+    $group->post('/activation/code', function($request, $response)use($user){
+        //get code sent to email. new code
+        $params = $request->getParsedBody();
+        $user->setEmail($params['email']);
+        $code = $user->ActivationCode();
+        return $response->withJson($code)->withStatus($code['statusCode']);
+    });
+
+    $group->post('/company/leaderboard', function ($request, $response)use($user){
+
+        $params = $request->getParsedBody();
+        $user->setToken($params['token']);
+        $leaderboard = $user->Leaderboard();
+        return $response->withJson($leaderboard)->withStatus($leaderboard['statusCode']);
+    });
+
+    $group->post('/activate', function ($request, $response)use($user){
+        $params = $request->getParsedBody();
+        $user->setEmail($params['email']);
+        $user->setConfirmation($params['code']);
+        $activation = $user->Verify();
+        return $response->withJson($activation)->withStatus($activation['statusCode']);
+    });
+});
 
 //clients routes
 $app->group('/api/client', function ($group)use($op){
@@ -178,7 +240,6 @@ $app->post("/newsletter/subscribe", function($request, $response)use($op){
     ->withStatus($subscribe['statusCode']);
 });
 
-
 $app->group('/admin', function ($group)use($admin){
 
     $group->post('/login', function ($request, $response)use($admin){
@@ -199,7 +260,7 @@ $app->group('/admin', function ($group)use($admin){
         $params = $request->getParsedBody();
         $name = $admin->validateParameter('First Name', $params['name'], STRING);
         $surname = $admin->validateParameter('Last Name', $params['surname'], STRING);
-         $msisdn = $admin->validateParameter('Mobile', $params['msisdn'], STRING, false);
+        $msisdn = $admin->validateParameter('Mobile', $params['msisdn'], STRING, false);
         $member_number = $admin->validateParameter('Member Number', $params['member_number'], STRING, false);
         $age = $admin->validateParameter('Age', $params['age'], STRING, false);
         $weight = $admin->validateParameter('Weight', $params['weight'], STRING,false);
@@ -226,7 +287,7 @@ $app->group('/admin', function ($group)use($admin){
                 return $response->withJson($email)->withStatus($email['statusCode']);
             }
         }else{
-             $admin->setEmail($surname['data']."@example.com");
+             $admin->setEmail(strtolower($surname['data'].rand(100,900)."@example.com"));
         }
 
         if ($age['success']){
