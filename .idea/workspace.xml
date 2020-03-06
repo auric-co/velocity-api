@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="5509ccd4-8576-4e04-872e-c41fff77f6bd" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/system/Mail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/system/Mail.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/system/Users.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/system/Users.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,10 +18,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/system/Users.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="355">
+            <state relative-caret-position="2567">
               <caret line="259" column="86" selection-start-line="259" selection-start-column="79" selection-end-line="259" selection-end-column="86" />
               <folding>
                 <element signature="n#Login#0;n#Users#0;n#!!top" />
@@ -68,11 +65,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/routes.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
-              <caret line="59" column="37" selection-start-line="59" selection-start-column="23" selection-end-line="59" selection-end-column="37" />
+            <state relative-caret-position="87">
+              <caret line="21" column="40" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -80,7 +77,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/system/Mail.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="355">
+            <state relative-caret-position="4692">
               <caret line="277" column="51" selection-start-line="277" selection-start-column="51" selection-end-line="277" selection-end-column="51" />
             </state>
           </provider>
@@ -143,7 +140,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -173,6 +169,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -207,17 +204,20 @@
       <workItem from="1583128111313" duration="3508000" />
       <workItem from="1583137445792" duration="13767000" />
       <workItem from="1583202821943" duration="3903000" />
+      <workItem from="1583301979353" duration="615000" />
+      <workItem from="1583315795177" duration="584000" />
+      <workItem from="1583403896767" duration="586000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21178000" />
+    <option name="totallyTimeSpent" value="22963000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25718608" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2685325" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -243,6 +243,20 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app/src/system/Clients.php" />
+    <entry file="file://$PROJECT_DIR$/app/src/system/Users.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2567">
+          <caret line="259" column="86" selection-start-line="259" selection-start-column="79" selection-end-line="259" selection-end-column="86" />
+          <folding>
+            <element signature="n#Login#0;n#Users#0;n#!!top" />
+            <element signature="n#Verify#0;n#Users#0;n#!!top" />
+            <element signature="n#Leaderboard#0;n#Users#0;n#!!top" />
+            <element signature="n#Company#0;n#Users#0;n#!!top" />
+            <element signature="n#activationEmail#0;n#Users#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/system/System.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -270,31 +284,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="59" column="37" selection-start-line="59" selection-start-column="23" selection-end-line="59" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/system/Mail.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
+        <state relative-caret-position="4692">
           <caret line="277" column="51" selection-start-line="277" selection-start-column="51" selection-end-line="277" selection-end-column="51" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/system/Users.php">
+    <entry file="file://$PROJECT_DIR$/app/routes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="259" column="86" selection-start-line="259" selection-start-column="79" selection-end-line="259" selection-end-column="86" />
-          <folding>
-            <element signature="n#Login#0;n#Users#0;n#!!top" />
-            <element signature="n#Verify#0;n#Users#0;n#!!top" />
-            <element signature="n#Leaderboard#0;n#Users#0;n#!!top" />
-            <element signature="n#Company#0;n#Users#0;n#!!top" />
-            <element signature="n#activationEmail#0;n#Users#0;n#!!top" />
-          </folding>
+        <state relative-caret-position="87">
+          <caret line="21" column="40" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="40" />
         </state>
       </provider>
     </entry>
